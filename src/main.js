@@ -1,13 +1,13 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./store";
-import router from "./router";
+import  router  from "./router/index";
 import "./assets/css/nucleo-icons.css";
 import "./assets/css/nucleo-svg.css";
 import ArgonDashboard from "./argon-dashboard";
 
-const appInstance = createApp(App);
-appInstance.use(store);
-appInstance.use(router);
-appInstance.use(ArgonDashboard);
-appInstance.mount("#app");
+const app = createApp(App);
+app.use(store);
+app.use(router);
+app.use(ArgonDashboard);
+app.mount("#app");

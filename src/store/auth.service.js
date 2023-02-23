@@ -16,9 +16,7 @@ class AuthService {
 
     logout() {
         localStorage.removeItem("user");
-        localStorage.removeItem("hotel");
     }
-
 }
 
 export default new AuthService();
