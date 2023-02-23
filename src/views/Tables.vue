@@ -16,7 +16,7 @@
 <script>
 import AuthorsTable from "./components/AuthorsTable.vue";
 import ProjectsTable from "./components/ProjectsTable.vue";
-
+import { authComputed, authMethods } from "@/store/helpers";
 export default {
   name: "tables",
   components: {
@@ -50,6 +50,12 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    ...authComputed,
+  },
+  methods: {
+    ...authMethods
   },
 };
 </script>

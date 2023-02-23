@@ -40,6 +40,7 @@ export default {
     value: String,
     placeholder: String,
     type: String,
+    model: String,
     isRequired: Boolean,
   },
   methods: {
