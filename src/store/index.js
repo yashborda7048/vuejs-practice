@@ -5,7 +5,6 @@ export default createStore({
     hideConfigButton: false,
     isPinned: true,
     sidebarType: "bg-white",
-
     mcolor: "",
     darkMode: false,
     isNavFixed: true,
@@ -15,7 +14,8 @@ export default createStore({
     showNavbar: true,
     showFooter: true,
     showMain: true,
-    layout: "default"
+    layout: "default",
+    user: null
   },
   mutations: {
     navbarMinimize(state) {
@@ -40,12 +40,20 @@ export default createStore({
       } else {
         state.isNavFixed = false;
       }
-    }
+    },
   },
   actions: {
     toggleSidebarColor({ commit }, payload) {
       commit("sidebarType", payload);
-    }
+    },
   },
-  getters: {}
+  getters: {
+    isLoggedIn() {
+      let user = localStorage.getItem("user");
+      console.log(user);
+      if (!user) {
+        this.$router.push({ path: '/signin' });
+      }
+    }
+  }
 });

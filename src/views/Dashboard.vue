@@ -4,49 +4,21 @@
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.money.title"
-              :value="stats.money.value"
-              :percentage="stats.money.percentage"
-
-              :iconBackground="stats.money.iconBackground"
-              :detail="stats.money.detail"
-              directionReverse
-            ></card>
+            <card :title="stats.money.title" :value="stats.money.value" :percentage="stats.money.percentage"
+              :iconBackground="stats.money.iconBackground" :detail="stats.money.detail" directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.users.title"
-              :value="stats.users.value"
-              :percentage="stats.users.percentage"
-
-              :iconBackground="stats.users.iconBackground"
-              :detail="stats.users.detail"
-              directionReverse
-            ></card>
+            <card :title="stats.users.title" :value="stats.users.value" :percentage="stats.users.percentage"
+              :iconBackground="stats.users.iconBackground" :detail="stats.users.detail" directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.clients.title"
-              :value="stats.clients.value"
-              :percentage="stats.clients.percentage"
-
-              :iconBackground="stats.clients.iconBackground"
-              :percentageColor="stats.clients.percentageColor"
-              :detail="stats.clients.detail"
-              directionReverse
-            ></card>
+            <card :title="stats.clients.title" :value="stats.clients.value" :percentage="stats.clients.percentage"
+              :iconBackground="stats.clients.iconBackground" :percentageColor="stats.clients.percentageColor"
+              :detail="stats.clients.detail" directionReverse></card>
           </div>
           <div class="col-lg-3 col-md-6 col-12">
-            <card
-              :title="stats.sales.title"
-              :value="stats.sales.value"
-              :percentage="stats.sales.percentage"
-
-              :iconBackground="stats.sales.iconBackground"
-              :detail="stats.sales.detail"
-              directionReverse
-            ></card>
+            <card :title="stats.sales.title" :value="stats.sales.value" :percentage="stats.sales.percentage"
+              :iconBackground="stats.sales.iconBackground" :detail="stats.sales.detail" directionReverse></card>
           </div>
         </div>
         <div class="row">
