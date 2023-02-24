@@ -1,7 +1,18 @@
 <template>
     <div class="pt-5 pb-4 container-fluid">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h6>HOTEL BRANDS</h6>
+                </div>
+                <div>
+                    <button type="submit" class=" bg-gradient-success btn-lg w-100 border-0 text-white"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasForm" @click="detailer()">Add New
+                        Brand</button>
+                </div>
+            </div>
+
+            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover">
@@ -58,9 +69,9 @@
     </div>
 
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasForm">
-        <div class="offcanvas-header" v-if="offcanvasForm">
-            <h5 class="offcanvas-title">
-                {{ brandData.name ? brandData.name : "Adding A New Brand" }}
+        <div class="offcanvas-header" >
+            <h5 class="offcanvas-title" v-if="!addNew">
+                {{ avgData.name ? avgData.name : "Adding A New Brand" }}
             </h5>
             <div>
                 <i class="fa fa-close text-dark" data-bs-dismiss="offcanvas" aria-label="Close"></i>
@@ -149,6 +160,7 @@ export default {
     data() {
         return {
             brands: '',
+            addNew: false,
             brandData: {},
             avgData: {},
             options: [
@@ -165,7 +177,6 @@ export default {
         async getBrandedData() {
             try {
                 const response = await UserService.getBrandData();
-                console.log(response.data);
                 if (response) {
                     this.brands = response;
                     this.selected = response[0];
@@ -192,11 +203,7 @@ export default {
                 }
             }
             this.avgData = data;
-            this.offcanvasForm = !this.offcanvasForm;
             console.log(this.avgData);
-        },
-        closer() {
-            this.offcanvasForm = !this.offcanvasForm;
         },
     }
 };
