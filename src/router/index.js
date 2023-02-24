@@ -15,7 +15,7 @@ router.beforeEach((routeTo, routeFrom, next) => {
   if (!authRequired) return next();
   const loggedIn = localStorage.getItem("user");
   console.log(authRequired , "auth");
-  console.log(loggedIn , "loggedIn");
+  // console.log(loggedIn , "loggedIn");
   if (authRequired && !loggedIn) {
     next("/login");
   } else {

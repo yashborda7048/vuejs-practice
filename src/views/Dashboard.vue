@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 container-fluid">
+  <div class="pt-5 pb-4 container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
@@ -97,7 +97,6 @@ import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
 import BR from "@/assets/img/icons/flags/BR.png";
-import { authComputed, authMethods } from "@/store/helpers";
 
 export default {
   name: "dashboard",
@@ -175,12 +174,6 @@ export default {
     GradientLineChart,
     Carousel,
     CategoriesCard,
-  },
-  computed: {
-    ...authComputed,
-  },
-  methods: {
-    ...authMethods
   },
 };
 </script>

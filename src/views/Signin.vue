@@ -33,7 +33,7 @@
               <div
                 class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-                                    background-size: cover;">
+                                        background-size: cover;">
                 <span class="mask bg-gradient-success opacity-6"></span>
                 <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
                 <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer
@@ -53,7 +53,7 @@ const body = document.getElementsByTagName("body")[0];
 import AuthService from "@/store/auth.service"
 
 export default {
-  name: "signin",
+  name: "login",
   data() {
     return {
       email: "admin@bwburlington.macrotech.net",
@@ -66,6 +66,7 @@ export default {
     this.$store.state.showSidenav = false;
     this.$store.state.showFooter = false;
     body.classList.remove("bg-gray-100");
+    this.isLoggedIn();
   },
   beforeUnmount() {
     this.$store.state.hideConfigButton = false;
@@ -80,12 +81,17 @@ export default {
         email: this.email,
         password: this.password,
       }).then((response) => {
-        console.log(JSON.stringify(response));
         if (response.access) {
           localStorage.setItem("user", JSON.stringify(response));
         }
         this.$router.push("/dashboard");
       });
+    },
+    isLoggedIn() {
+      let user = localStorage.getItem("user");
+      if (user) {
+        this.$router.push('/dashboard');
+      }
     }
   }
 };

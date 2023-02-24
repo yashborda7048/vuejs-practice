@@ -53,7 +53,6 @@ import PaymentCard from "./components/PaymentCard.vue";
 import InvoiceCard from "./components/InvoiceCard.vue";
 import BillingCard from "./components/BillingCard.vue";
 import TransactionCard from "./components/TransactionCard.vue";
-import { authComputed, authMethods } from "@/store/helpers";
 export default {
   name: "Billing",
   components: {
@@ -79,12 +78,6 @@ export default {
         price: "$455.00",
       },
     };
-  },
-  computed: {
-    ...authComputed,
-  },
-  methods: {
-    ...authMethods
   },
 };
 </script>

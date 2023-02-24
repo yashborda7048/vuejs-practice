@@ -1,7 +1,8 @@
 const routes = [
     {
         path: "/",
-        redirect: "/signin",
+        name: "",
+        redirect: "/login",
     },
     {
         path: "/dashboard",
@@ -12,20 +13,12 @@ const routes = [
         component: import('../views/Dashboard.vue'),
     },
     {
-        path: "/tables",
-        name: "Tables",
+        path: "/brand-list",
+        name: "Brand-list",
         meta: {
             authRequired: true
         },
-        component: import('../views/Tables.vue'),
-    },
-    {
-        path: "/billing",
-        name: "Billing",
-        meta: {
-            authRequired: true
-        },
-        component: import('../views/Billing.vue'),
+        component: import('../views/Brand-list.vue'),
     },
     {
         path: "/profile",
@@ -47,7 +40,7 @@ const routes = [
     {
         path: "/404",
         name: "404",
-        component: require("../views/404"),
+        component: require("../views/404.vue"),
     },
 ];
 

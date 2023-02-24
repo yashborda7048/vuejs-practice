@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "https://devkiosk.cloudext.co/api/v1/";
+const API_URL =
+    process.env.NODE_ENV == "development"
+        ? process.env.VUE_APP_ROOT_API
+        : process.env.VUE_APP_ROOT_PRODUCTION_API;
 
 class AuthService {
     login(user) {

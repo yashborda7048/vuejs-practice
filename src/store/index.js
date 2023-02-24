@@ -47,14 +47,6 @@ export default createStore({
       commit("sidebarType", payload);
     },
   },
-  getters: {
-    isLoggedIn() {
-      let user = localStorage.getItem("user");
-      console.log(user);
-      if (!user) {
-        this.$router.push({ path: '/signin' });
-      }
-    }
-  }
+  getters: {}
 });
 
