@@ -1,13 +1,14 @@
 <template>
-    <div class="pt-5 pb-4 container-fluid">
+    <!-- brand-list component  -->
+    <div class="py-4 container-fluid brand-list">
         <div class="row">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-3 mt-2">
                 <div>
                     <h6>HOTEL BRANDS</h6>
                 </div>
                 <div>
                     <button type="submit" class=" bg-gradient-success btn-lg w-100 border-0 text-white"
-                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasForm" @click="detailer()">Add New
+                        data-bs-toggle="offcanvas" data-bs-target="#addForm" @click="detailer(editbrand)">Add New
                         Brand</button>
                 </div>
             </div>
@@ -55,7 +56,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center" role="button" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasForm" @click="detailer(brand)">
+                                            data-bs-target="#editForm" @click="detailer(brand)">
                                             <i class="fas fa-pencil-alt text-success fs-5"></i>
                                         </div>
                                     </td>
@@ -68,10 +69,11 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasForm">
-        <div class="offcanvas-header" >
-            <h5 class="offcanvas-title" v-if="!addNew">
-                {{ avgData.name ? avgData.name : "Adding A New Brand" }}
+    <!-- addForm -->
+    <div class="offcanvas offcanvas-end " data-bs-scroll="true" tabindex="-1" id="addForm">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">
+                Adding A New Brand
             </h5>
             <div>
                 <i class="fa fa-close text-dark" data-bs-dismiss="offcanvas" aria-label="Close"></i>
@@ -82,55 +84,158 @@
                 <div class="col-12">
                     <div class="card mb-0">
                         <div class="card-body p-3">
-                            <form @submit.prevent="edittask">
-                                <div class="form-group row mb-4">
-                                    <label for="name" class="col-form-label col-12">BRAND NAME *</label>
-                                    <div class="col-12">
-                                        <input class="form-control" v-model.trim="avgData.name" type="text"
-                                            placeholder="Enter Brand Name">
+                            <form @submit.prevent="AddBrandData()">
+                                <div class=" row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="name" class="col-form-label ">BRAND NAME *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="AddData.name" type="text"
+                                                placeholder="Enter Brand Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email" class="col-form-label ">Email *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="AddData.email" type="email"
+                                                placeholder="Enter Email ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="mobile" class="col-form-label ">Mobile *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="AddData.mobile" type="text"
+                                                placeholder="Enter Mobile ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">MEMBERSHIP REWARDS</label>
+                                        <div class="">
+                                            <select class="form-control" v-model="AddData.is_support_membership_rewards">
+                                                <option v-for="option in options" :value="option.value" :key="option.value">
+                                                    {{ option.text }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">REWARDS WEBSITE JOIN URL</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="AddData.rewards_website_join_url"
+                                                type="text" placeholder="Enter Rewards Joining URL ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">REWARDS WEBSITE URL </label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="AddData.rewards_website_url"
+                                                type="text" placeholder="Enter Reward Website ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">logo </label>
+                                        <VueDropify @upload="AddlogoChange($event)"
+                                            :src="AddData.logo ? AddData.logo : null"
+                                            message="Drop image here or click to select" />
                                     </div>
                                 </div>
+                                <hr>
 
-                                <div class="form-group row mb-4">
-                                    <label for="email" class="col-form-label col-12">Email *</label>
-                                    <div class="col-12">
-                                        <input class="form-control" v-model.trim="avgData.email" type="email"
-                                            placeholder="Enter Email ">
+                                <div class="mb-3 mb-0">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="reset" class="btn btn-secondary ms-1">
+                                            Cancel
+                                        </button>
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-                                <div class="form-group row mb-4">
-                                    <label for="mobile" class="col-form-label col-12">Mobile *</label>
-                                    <div class="col-12">
-                                        <input class="form-control" v-model.trim="avgData.mobile" type="text"
-                                            placeholder="Enter Mobile ">
+    <!-- editForm -->
+    <div class="offcanvas offcanvas-end " data-bs-scroll="true" tabindex="-1" id="editForm">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">
+                {{ EditData.name }}
+            </h5>
+            <div>
+                <i class="fa fa-close text-dark" data-bs-dismiss="offcanvas" aria-label="Close"></i>
+            </div>
+        </div>
+        <div class="offcanvas-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-0">
+                        <div class="card-body p-3">
+                            <form @submit.prevent="UpdateBrandData()">
+                                <div class=" row mb-4">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="name" class="col-form-label ">BRAND NAME *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="EditData.name" type="text"
+                                                placeholder="Enter Brand Name">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row mb-4">
-                                    <label for="" class="col-form-label col-12">MEMBERSHIP REWARDS</label>
-                                    <div class="col-12">
-                                        <select class="form-control" v-model="avgData.is_support_membership_rewards">
-                                            <option v-for="option in options" :value="option.value" :key="option.value">
-                                                {{ option.text }}
-                                            </option>
-                                        </select>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="email" class="col-form-label ">Email *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="EditData.email" type="email"
+                                                placeholder="Enter Email ">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row mb-4">
-                                    <label for="" class="col-form-label col-12">REWARDS WEBSITE JOIN URL</label>
-                                    <div class="col-12">
-                                        <input class="form-control" v-model.trim="avgData.rewards_website_join_url"
-                                            type="text" placeholder="Enter Rewards Joining URL ">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="mobile" class="col-form-label ">Mobile *</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="EditData.mobile" type="text"
+                                                placeholder="Enter Mobile ">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row mb-4">
-                                    <label for="" class="col-form-label col-12">REWARDS WEBSITE URL </label>
-                                    <div class="col-12">
-                                        <input class="form-control" v-model.trim="avgData.rewards_website_url" type="text"
-                                            placeholder="Enter Reward Website ">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">MEMBERSHIP REWARDS</label>
+                                        <div class="">
+                                            <select class="form-control" v-model="EditData.is_support_membership_rewards">
+                                                <option v-for="option in options" :value="option.value" :key="option.value">
+                                                    {{ option.text }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">REWARDS WEBSITE JOIN URL</label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="EditData.rewards_website_join_url"
+                                                type="text" placeholder="Enter Rewards Joining URL ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">REWARDS WEBSITE URL </label>
+                                        <div class="">
+                                            <input class="form-control" v-model.trim="EditData.rewards_website_url"
+                                                type="text" placeholder="Enter Reward Website ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <label for="" class="col-form-label ">logo </label>
+                                        <VueDropify @upload="EditlogoChange($event)"
+                                            :src="EditData.logo ? EditData.logo : null"
+                                            message="Drop image here or click to select" />
                                     </div>
                                 </div>
                                 <hr>
@@ -154,7 +259,23 @@
 </template>
   
 <script>
-import UserService from '../store/user.service'
+import Swal from 'sweetalert2';
+import VueDropify from "vue-dropify";
+import UserService from '../store/user.service';
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+
+
 export default {
     name: "Billing",
     data() {
@@ -162,13 +283,20 @@ export default {
             brands: '',
             addNew: false,
             brandData: {},
-            avgData: {},
+            EditData: {},
+            AddData: {},
             options: [
                 { text: "Yes", value: true },
                 { text: "No", value: false },
             ],
-            offcanvasForm: false
+            offcanvasForm: false,
+            logoImage: "",
+            iconImages: "",
+            rewardImages: "",
         }
+    },
+    components: {
+        VueDropify
     },
     mounted() {
         this.getBrandedData();
@@ -185,27 +313,53 @@ export default {
                 console.log(error);
             }
         },
-        changePremiumStatus(data, brandID) {
-            UserService.editBrandData(data, brandID)
+        async changePremiumStatus(data, brandID) {
+            await UserService.editBrandData(data, brandID)
                 .then(() => {
-                    alert("Brand status changed!");
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Brand status changed!'
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
         detailer(data) {
-            if (data) {
-                if (!data.name) {
-                    this.addNew = true;
-                } else {
-                    this.addNew = false;
-                }
-            }
-            this.avgData = data;
-            console.log(this.avgData);
+            this.EditData = data;
+            console.log(this.EditData, "EditData");
         },
-    }
+        async UpdateBrandData() {
+            await UserService.editBrandData(this.EditData.id, {
+                name: this.EditData.name,
+                email: this.EditData.email,
+                mobile: this.EditData.mobile,
+                is_support_membership_rewards: this.EditData.is_support_membership_rewards,
+                rewards_website_join_url: this.EditData.rewards_website_join_url,
+                rewards_website_url: this.EditData.rewards_website_url
+            }).then((response) => {
+                console.log(response);
+            });
+        },
+        async AddBrandData() {
+            await UserService.addBrandData({
+                name: this.AddData.name,
+                email: this.AddData.email,
+                mobile: this.AddData.mobile,
+                is_support_membership_rewards: this.AddData.is_support_membership_rewards,
+                rewards_website_join_url: this.AddData.rewards_website_join_url,
+                rewards_website_url: this.AddData.rewards_website_url
+            }).then((response) => {
+                console.log(response);
+            });
+        },
+        AddlogoChange(event) {
+            this.AddData.logo = event[0] == undefined ? null : event[0];
+        },
+        EditlogoChange(event) {
+            this.EditData.logo = event[0] == undefined ? null : event[0];
+        }
+    },
 };
 </script>
 
@@ -222,6 +376,10 @@ table thead th {
 table tbody p,
 table thead th {
     font-size: 14px;
+}
+
+.offcanvas-end {
+    width: 900px !important;
 }
 </style>
   

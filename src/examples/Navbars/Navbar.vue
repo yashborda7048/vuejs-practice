@@ -14,7 +14,15 @@
               <span class="d-sm-inline d-none text-dark">Sign In</span>
             </router-link>
           </li>
-
+          <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <a href="#" @click="toggleSidebar" class="p-0 nav-link text-dark" id="iconNavbarSidenav">
+              <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line bg-dark"></i>
+                <i class="sidenav-toggler-line bg-dark"></i>
+                <i class="sidenav-toggler-line bg-dark"></i>
+              </div>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -54,3 +62,8 @@ export default {
   }
 };
 </script>
+
+<style>
+.z-index-sticky {
+  z-index: 999 !important;
+}</style>

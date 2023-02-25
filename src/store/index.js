@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    showConfig: false,
     hideConfigButton: false,
     isPinned: true,
     sidebarType: "bg-white",
@@ -18,6 +19,9 @@ export default createStore({
     user: null
   },
   mutations: {
+    toggleConfigurator(state) {
+      state.showConfig = !state.showConfig;
+    },
     navbarMinimize(state) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
 
