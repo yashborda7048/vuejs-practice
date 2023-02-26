@@ -65,5 +65,5 @@ export default {
 
 <style>
 .z-index-sticky {
-  z-index: 999 !important;
+  z-index: 2 !important;
 }</style>
