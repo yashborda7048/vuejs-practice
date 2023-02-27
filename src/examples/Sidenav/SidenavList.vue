@@ -12,6 +12,13 @@
         </sidenav-item>
       </li>
       <li class="nav-item">
+        <sidenav-item url="/hotel-list" :class="getRoute() === 'hotel-list' ? 'active' : ''" :navText="'Hotel list'">
+          <template v-slot:icon>
+            <i class="ni ni-bullet-list-67 text-danger text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
         <sidenav-item url="/brand-list" :class="getRoute() === 'brand-list' ? 'active' : ''" :navText="'Brand list'">
           <template v-slot:icon>
             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>

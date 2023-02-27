@@ -42,6 +42,15 @@ class UserService {
         });
         return response.data;
     }
+
+    // Get Hotel List
+    async getHotelsList() {
+        const response = await axios.get(API_URL + "spa/hotel", {
+            headers: authHeader(),
+        });
+        return response.data;
+    }
+
 }
 
 export default new UserService();

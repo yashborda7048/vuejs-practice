@@ -45,3 +45,9 @@ export default {
   props: ["custom_class", "layout"]
 };
 </script>
+
+<style>
+  aside {
+    z-index: 99 !important;
+  }
+</style>

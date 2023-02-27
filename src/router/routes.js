@@ -21,12 +21,12 @@ const routes = [
         component: import('../views/Brand-list.vue'),
     },
     {
-        path: "/profile",
-        name: "Profile",
+        path: "/hotel-list",
+        name: "Hotel-list",
         meta: {
             authRequired: true
         },
-        component: import('../views/Profile.vue'),
+        component: import('../views/Hotel-list.vue'),
     },
     {
         path: "/login",

@@ -423,11 +423,11 @@ export default {
     },
     EditLogo($event) {
       console.log($event.target.files[0].name);
-      this.EditData.membership_reward_image = $event.target.files[0].name;
+      this.EditData.logo = $event.target.files[0].name;
     },
     EditFavicon($event) {
       console.log($event.target.files[0].name);
-      this.EditData.membership_reward_image = $event.target.files[0].name;
+      this.EditData.favicon_icon = $event.target.files[0].name;
     },
     EditRewardImage($event) {
       console.log($event.target.files[0].name);
@@ -435,11 +435,11 @@ export default {
     },
     AddLogo($event) {
       console.log($event.target.files[0].name);
-      this.AddData.membership_reward_image = $event.target.files[0].name;
+      this.AddData.logo = $event.target.files[0].name;
     },
     AddFavicon($event) {
       console.log($event.target.files[0].name);
-      this.AddData.membership_reward_image = $event.target.files[0].name;
+      this.AddData.favicon_icon = $event.target.files[0].name;
     },
     AddRewardImage($event) {
       console.log($event.target.files[0].name);
@@ -465,7 +465,7 @@ table thead th {
 }
 
 table tbody tr td:nth-of-type(1) div {
-  /* min-width: 180px; */
+  min-width: 180px;
 }
 
 .offcanvas-end {
