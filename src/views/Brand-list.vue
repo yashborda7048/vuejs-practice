@@ -28,7 +28,29 @@
                   <th scope="col">ACTIONS</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody v-if="isStillLoading">
+                <tr v-for="item in 10" :key="item">
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                  <td class="placeholder-glow">
+                    <span class="placeholder w-100 placeholder-lg"></span>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody v-else>
                 <tr v-for="brand in brands" :key="brand.id">
                   <td>
                     <div class="d-flex align-items-center">
@@ -351,6 +373,7 @@ export default {
     return {
       brands: "",
       addNew: false,
+      isStillLoading: false,
       brandData: {},
       EditData: {},
       AddData: {},
@@ -367,11 +390,13 @@ export default {
   },
   methods: {
     async getBrandedData() {
+      this.isStillLoading = true;
       try {
         const response = await UserService.getBrandData();
         if (response) {
           this.brands = response;
           this.selected = response[0];
+          this.isStillLoading = false;
         }
       } catch (error) {
         console.log(error);

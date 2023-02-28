@@ -51,6 +51,29 @@ class UserService {
         return response.data;
     }
 
+    // HOTEL DETAILS
+
+    //hotel details
+    getHotelDetails() {
+        return axios
+            .get(API_URL + "hotel", { headers: authHeader() })
+            .then((response) => {
+                localStorage.setItem("hotel", JSON.stringify(response.data));
+                return response.data;
+            });
+    }
+    //update hotel details
+    // updateHotelDetails(data) {
+    //     return axios
+    //         .patch(API_URL + "hotel", data, {
+    //             headers: authHeaderWithMultipartData(),
+    //         })
+    //         .then((response) => {
+    //             return response.data;
+    //         });
+    // }
+
+
 }
 
 export default new UserService();

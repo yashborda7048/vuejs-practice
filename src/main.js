@@ -5,6 +5,8 @@ import  router  from "./router/index";
 import "./assets/css/nucleo-icons.css";
 import "./assets/css/nucleo-svg.css";
 import VueSweetalert2 from 'vue-sweetalert2';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import ArgonDashboard from "./argon-dashboard";
 

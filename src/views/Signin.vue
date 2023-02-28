@@ -56,8 +56,8 @@ export default {
   name: "login",
   data() {
     return {
-      email: "admin@bwburlington.macrotech.net",
-      password: "Admin@936!",
+      email: "kaushik.patel@macrotech.net",
+      password: "K@936936!",
     };
   },
   created() {

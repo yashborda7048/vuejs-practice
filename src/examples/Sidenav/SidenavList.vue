@@ -25,6 +25,13 @@
           </template>
         </sidenav-item>
       </li>
+      <li class="nav-item">
+        <sidenav-item url="/hotel" :class="getRoute() === 'hotel' ? 'active' : ''" :navText="'Hotel'">
+          <template v-slot:icon>
+            <i class="ni ni-basket text-dark text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
     </ul>
   </div>
 </template>

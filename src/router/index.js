@@ -12,6 +12,7 @@ const router = createRouter({
 router.beforeEach((routeTo, routeFrom, next) => {
   const authRequired = routeTo.matched.some((route) => route.meta.authRequired);
   document.title = `${process.env.VUE_APP_TITLE} | ${routeTo.name}`;
+  if (routeTo.name == undefined) return next ("/404");
   if (!authRequired) return next();
   const loggedIn = localStorage.getItem("user");
   console.log(authRequired , "auth");

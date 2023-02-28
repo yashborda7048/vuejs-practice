@@ -5,20 +5,20 @@ const routes = [
         redirect: "/login",
     },
     {
+        path: "/login",
+        name: "Login",
+        meta: {
+            authRequired: false
+        },
+        component: import('../views/Signin.vue'),
+    },
+    {
         path: "/dashboard",
         name: "Dashboard",
         meta: {
             authRequired: true
         },
         component: import('../views/Dashboard.vue'),
-    },
-    {
-        path: "/brand-list",
-        name: "Brand-list",
-        meta: {
-            authRequired: true
-        },
-        component: import('../views/Brand-list.vue'),
     },
     {
         path: "/hotel-list",
@@ -29,18 +29,26 @@ const routes = [
         component: import('../views/Hotel-list.vue'),
     },
     {
-        path: "/login",
-        name: "Signin",
+        path: "/brand-list",
+        name: "Brand-list",
         meta: {
-            authRequired: false
+            authRequired: true
         },
-        component: import('../views/Signin.vue'),
+        component: import('../views/Brand-list.vue'),
+    },
+    {
+        path: "/hotel",
+        name: "Hotel",
+        meta: {
+            authRequired: true
+        },
+        component: import('../views/Hotel.vue'),
     },
     /** PAGE NOT FOUND ROUTE */
     {
         path: "/404",
         name: "404",
-        component: require("../views/404.vue"),
+        component: import("../views/Pagenotfound.vue"),
     },
 ];
 
